@@ -13,7 +13,10 @@ public class User {
     private long id;
 
 
-    public User(){}
+    public User(){
+        this.name =null;
+        this.userUrl=null;
+    }
     public User(String name, String userUrl){
         this.name = name;
         this.userUrl = userUrl;

@@ -1,4 +1,5 @@
 course\Application.class
 course\domain\User.class
 course\dao\UserRepository.class
+course\controller\ViewController.class
 course\controller\SocialController.class
