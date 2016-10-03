@@ -1,0 +1,4 @@
+course\Application.class
+course\domain\User.class
+course\dao\UserRepository.class
+course\controller\SocialController.class
