@@ -1,0 +1,22 @@
+.fb{
+background-image: url(/templates/img/connect-with-facebook.png);
+background-size: cover;
+width: 150px;
+height: 35px;
+	margin-left: 1.5%;
+	margin-bottom: 1px;
+}
+.tw{
+background-image: url(/templates/img/follow_us_in_twitter.gif);
+background-size: cover;
+width: 150px;
+	margin-left: 1.5%;
+height: 35px;
+}
+.dropdown-menu{
+	border-radius: 10px;
+}
+.userinfo{
+	margin-left: 5%;
+	border: true;
+}

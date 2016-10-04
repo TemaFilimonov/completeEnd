@@ -20,11 +20,22 @@ public class User {
     public User(String name, String userUrl){
         this.name = name;
         this.userUrl = userUrl;
+        this.role = "user";
     }
 
     @Column(name = "name")
     private String name;
 
+    @Column(name = "role")
+    private String role;
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 
     @Column(name = "user_url")
     private String userUrl;
