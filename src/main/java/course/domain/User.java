@@ -63,28 +63,4 @@ public class User {
     public void setName(String name) {
         this.name = name;
     }
-/*
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        User user = (User) o;
-
-        if (id != user.id) return false;
-        if (name != null ? !name.equals(user.name) : user.name != null) return false;
-        if (userType != null ? !userType.equals(user.userType) : user.userType != null) return false;
-
-        return true;
-    }
-*/
-    /*
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (userType != null ? userType.hashCode() : 0);
-        return result;
-    }
-    */
 }
