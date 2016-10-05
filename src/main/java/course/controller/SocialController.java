@@ -11,7 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.inject.Inject;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpSessionContext;
+import java.util.Enumeration;
 
 /**
  * Created by Артем Константинович on 30.09.2016.
@@ -45,6 +48,7 @@ public class SocialController {
                 user.setName(twitter.userOperations().getScreenName());
                 user.setUserUrl(twitter.userOperations().getUserProfile().getProfileUrl());
                 user.setRole("user");
+                user.setUser_photo_url(twitter.userOperations().getUserProfile().getProfileImageUrl());
                 userRepository.save(user);
 
                 model.addAttribute("user", user.getUserUrl());
@@ -76,6 +80,7 @@ public class SocialController {
                     user.setName(facebook.userOperations().getUserProfile().getName());
                     user.setUserUrl(facebook.userOperations().getUserProfile().getLink());
                     user.setRole("user");
+                    user.setUser_photo_url("http://graph.facebook.com/"+facebook.userOperations().getUserProfile().getId()+"/picture?type=square");
                     userRepository.save(user);
 
                     model.addAttribute("user",user.getUserUrl());
@@ -106,5 +111,102 @@ public class SocialController {
         return "index";
     }
 
+    @RequestMapping(value = "/disconnect")
+    public String disconnect(HttpSession httpSession){
+        if(connectionRepository.findPrimaryConnection(Twitter.class) != null){
+            connectionRepository.removeConnection(connectionRepository.getPrimaryConnection(Twitter.class).getKey());
+        }
+
+        if (connectionRepository.findPrimaryConnection(Facebook.class) != null){
+            connectionRepository.removeConnection(connectionRepository.getPrimaryConnection(Facebook.class).getKey());
+        }
+        httpSession = new HttpSession() {
+            @Override
+            public long getCreationTime() {
+                return 0;
+            }
+
+            @Override
+            public String getId() {
+                return null;
+            }
+
+            @Override
+            public long getLastAccessedTime() {
+                return 0;
+            }
+
+            @Override
+            public ServletContext getServletContext() {
+                return null;
+            }
+
+            @Override
+            public void setMaxInactiveInterval(int i) {
+
+            }
+
+            @Override
+            public int getMaxInactiveInterval() {
+                return 0;
+            }
+
+            @Override
+            public HttpSessionContext getSessionContext() {
+                return null;
+            }
+
+            @Override
+            public Object getAttribute(String s) {
+                return null;
+            }
+
+            @Override
+            public Object getValue(String s) {
+                return null;
+            }
+
+            @Override
+            public Enumeration<String> getAttributeNames() {
+                return null;
+            }
+
+            @Override
+            public String[] getValueNames() {
+                return new String[0];
+            }
+
+            @Override
+            public void setAttribute(String s, Object o) {
+
+            }
+
+            @Override
+            public void putValue(String s, Object o) {
+
+            }
+
+            @Override
+            public void removeAttribute(String s) {
+
+            }
+
+            @Override
+            public void removeValue(String s) {
+
+            }
+
+            @Override
+            public void invalidate() {
+
+            }
+
+            @Override
+            public boolean isNew() {
+                return false;
+            }
+        };
+        return "index";
+    }
 
 }

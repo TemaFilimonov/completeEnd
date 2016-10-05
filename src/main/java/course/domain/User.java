@@ -22,6 +22,16 @@ public class User {
         this.userUrl = userUrl;
         this.role = "user";
     }
+    @Column(name = "user_photo_url")
+    private String user_photo_url;
+
+    public String getUser_photo_url() {
+        return user_photo_url;
+    }
+
+    public void setUser_photo_url(String user_photo_url) {
+        this.user_photo_url = user_photo_url;
+    }
 
     @Column(name = "name")
     private String name;
