@@ -29,7 +29,7 @@ public class ProfileController {
     public @ResponseBody UserProfile ViewProfile(HttpSession httpSession, @PathVariable("id") String id){
         User user = new User();
         user = userRepository.findById(Integer.parseInt(id));
-        return new UserProfile(user.getName(),user.getUser_photo_url(),user.getUserUrl());
+        return new UserProfile(id ,httpSession.getAttribute("id").toString(), user.getName(),user.getUser_photo_url(),user.getUserUrl());
     }
 
     @RequestMapping(value = "/profile", method = RequestMethod.GET)
