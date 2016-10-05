@@ -9,14 +9,7 @@
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <body ng-app="course">
-<div th:switch="${role}">
-    <span th:case="'user'">
-		<div th:replace="fragments/header ::'userHeader'"></div>
-    </span>
-    <span th:case="*">
-		<div th:replace="fragments/header ::'unsignedHeader'"></div>
-    </span>
-</div>
+hello
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

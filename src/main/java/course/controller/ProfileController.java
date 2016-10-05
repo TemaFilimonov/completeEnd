@@ -8,14 +8,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 /**
  * Created by Nox on 05.10.2016.
  */
 @Controller
-@RequestMapping("/profile")
+@RequestMapping("/")
 public class ProfileController {
 
     @Autowired
@@ -26,16 +25,16 @@ public class ProfileController {
         this.userRepository = userRepository;
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public @ResponseBody UserProfile ViewProfile(@PathVariable long id, HttpSession httpSession){
+    @RequestMapping(value = "/curentUser/info", method = RequestMethod.GET)
+    public @ResponseBody UserProfile ViewProfile(HttpSession httpSession){
         User user = new User();
-        user = userRepository.findById(id);
+        user = userRepository.findById(Integer.parseInt(httpSession.getAttribute("id").toString()));
         return new UserProfile(user.getName(),httpSession.getAttribute("img").toString(),user.getUserUrl());
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.POST)
-    public String ViewProfileRole(@PathVariable long id, Model model){
-        model.addAttribute("id", userRepository.findById(id).getRole());
-        return "/profile/{id}";
+    @RequestMapping(value = "/profile", method = RequestMethod.POST)
+    public String ViewProfileRole(Model model, HttpSession httpSession){
+        model.addAttribute("role", userRepository.findById(Integer.parseInt(httpSession.getAttribute("id").toString())).getRole());
+        return "/profile";
     }
 }
