@@ -51,6 +51,7 @@ public class SocialController {
                 model.addAttribute("name", user.getName());
                 model.addAttribute("role", user.getRole());
                 model.addAttribute("id", user.getId());
+                httpSession.setAttribute("name", user.getName());
                 httpSession.setAttribute("role", user.getRole());
                 httpSession.setAttribute("id", user.getId());
                 httpSession.setAttribute("img", twitter.userOperations().getUserProfile().getProfileImageUrl());
@@ -62,6 +63,7 @@ public class SocialController {
                 model.addAttribute("name",user.getName());
                 model.addAttribute("role",user.getRole());
                 model.addAttribute("id", user.getId());
+                httpSession.setAttribute("name", user.getName());
                 httpSession.setAttribute("role", user.getRole());
                 httpSession.setAttribute("id", user.getId());
                 httpSession.setAttribute("img", twitter.userOperations().getUserProfile().getProfileImageUrl());
@@ -80,6 +82,7 @@ public class SocialController {
                     model.addAttribute("name", user.getName());
                     model.addAttribute("role", user.getRole());
                     model.addAttribute("id", user.getId());
+                    httpSession.setAttribute("name", user.getName());
                     httpSession.setAttribute("role", user.getRole());
                     httpSession.setAttribute("id", user.getId());
                     httpSession.setAttribute("img", "http://graph.facebook.com/"+facebook.userOperations().getUserProfile().getId()+"/picture?type=square");
@@ -91,6 +94,7 @@ public class SocialController {
                     model.addAttribute("name",user.getName());
                     model.addAttribute("role",user.getRole());
                     model.addAttribute("id", user.getId());
+                    httpSession.setAttribute("name", user.getName());
                     httpSession.setAttribute("role",user.getRole());
                     httpSession.setAttribute("id",user.getId());
                     httpSession.setAttribute("img", "http://graph.facebook.com/"+facebook.userOperations().getUserProfile().getId()+"/picture?type=square");

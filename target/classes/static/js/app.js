@@ -1,11 +1,22 @@
 'use strict';
 
 
-var App = angular.module('course', []);
+var App = angular.module('profile', []);
 
-App.controller('MainController', function ($scope, $http) {
-    
-  $http.get('users').success(function (data) {
-    $scope.users = data;
+App.controller('profileUserCtrl',['$scope','$http','$location', function ($scope, $http, $location) {
+  $scope.user = [];
+
+
+  $http.get('http://localhost:8080/user/info/' + window.location.search.slice(4)).success(function (data) {
+    $scope.user = data;
+  });
+}]);
+
+
+App.controller('profileSiteCtrl', function ($scope, $http) {
+  $scope.site = [];
+
+  $http.get('http://localhost:8080/someDir').success(function (data) {
+    $scope.site = data;
   });
 });

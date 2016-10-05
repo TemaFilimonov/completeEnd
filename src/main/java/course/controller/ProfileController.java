@@ -25,16 +25,19 @@ public class ProfileController {
         this.userRepository = userRepository;
     }
 
-    @RequestMapping(value = "/curentUser/info", method = RequestMethod.GET)
-    public @ResponseBody UserProfile ViewProfile(HttpSession httpSession){
+    @RequestMapping(value = "/user/info/{id}", method = RequestMethod.GET)
+    public @ResponseBody UserProfile ViewProfile(HttpSession httpSession, @PathVariable("id") String id){
         User user = new User();
-        user = userRepository.findById(Integer.parseInt(httpSession.getAttribute("id").toString()));
+        user = userRepository.findById(Integer.parseInt(id));
         return new UserProfile(user.getName(),httpSession.getAttribute("img").toString(),user.getUserUrl());
     }
 
-    @RequestMapping(value = "/profile", method = RequestMethod.POST)
+    @RequestMapping(value = "/profile", method = RequestMethod.GET)
     public String ViewProfileRole(Model model, HttpSession httpSession){
-        model.addAttribute("role", userRepository.findById(Integer.parseInt(httpSession.getAttribute("id").toString())).getRole());
+        model.addAttribute("role", httpSession.getAttribute("role"));
+        model.addAttribute("name", httpSession.getAttribute("name"));
+        model.addAttribute("id", httpSession.getAttribute("id"));
+        model.addAttribute("img", httpSession.getAttribute("img"));
         return "/profile";
     }
 }
