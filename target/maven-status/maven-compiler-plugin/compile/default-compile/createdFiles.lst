@@ -1,4 +1,5 @@
 course\domain\Tag.class
+course\dao\SiteRepository.class
 course\dao\UserRepository.class
 course\controller\SocialController.class
 course\domain\UserProfile.class
@@ -6,4 +7,5 @@ course\Application.class
 course\domain\Page.class
 course\domain\User.class
 course\domain\Site.class
+course\controller\SiteController.class
 course\controller\ProfileController.class
