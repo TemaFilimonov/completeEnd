@@ -28,6 +28,28 @@ public class Site {
     @Column(name = "owner_id")
     private long ownerId;
 
+    @Column(name = "create_date")
+    private String create_date;
+
+    public String getCreateDate() {
+        return create_date;
+    }
+
+    public void setCreateDate(String create_date) {
+        this.create_date = create_date;
+    }
+
+    public String getEditDate() {
+        return edit_date;
+    }
+
+    public void setEditDate(String edit_date) {
+        this.edit_date = edit_date;
+    }
+
+    @Column(name = "edit_date")
+    private String edit_date;
+
     public long getId() {
         return id;
     }

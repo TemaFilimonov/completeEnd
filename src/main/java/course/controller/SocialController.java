@@ -115,9 +115,7 @@ public class SocialController {
     public String disconnect(HttpSession httpSession){
         if(connectionRepository.findPrimaryConnection(Twitter.class) != null){
             connectionRepository.removeConnection(connectionRepository.getPrimaryConnection(Twitter.class).getKey());
-        }
-
-        if (connectionRepository.findPrimaryConnection(Facebook.class) != null){
+        } else {
             connectionRepository.removeConnection(connectionRepository.getPrimaryConnection(Facebook.class).getKey());
         }
         httpSession = new HttpSession() {
