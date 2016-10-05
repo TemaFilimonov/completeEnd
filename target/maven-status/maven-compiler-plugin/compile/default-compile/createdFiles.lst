@@ -1,4 +1,6 @@
-course\Application.class
-course\domain\User.class
 course\dao\UserRepository.class
 course\controller\SocialController.class
+course\domain\UserProfile.class
+course\Application.class
+course\domain\User.class
+course\controller\ProfileController.class

@@ -51,6 +51,8 @@ public class SocialController {
                 model.addAttribute("name", user.getName());
                 model.addAttribute("role", user.getRole());
                 httpSession.setAttribute("role", user.getRole());
+                httpSession.setAttribute("id", user.getId());
+                httpSession.setAttribute("img", twitter.userOperations().getUserProfile().getProfileImageUrl());
                 model.addAttribute("img", twitter.userOperations().getUserProfile().getProfileImageUrl());
             }
             else{
@@ -58,6 +60,8 @@ public class SocialController {
                 model.addAttribute("name",userRepository.findByUserUrl(twitter.userOperations().getUserProfile().getProfileUrl()).getName());
                 model.addAttribute("role",userRepository.findByUserUrl(twitter.userOperations().getUserProfile().getProfileUrl()).getRole());
                 httpSession.setAttribute("role", userRepository.findByUserUrl(twitter.userOperations().getUserProfile().getProfileUrl()).getRole());
+                httpSession.setAttribute("id", userRepository.findByUserUrl(twitter.userOperations().getUserProfile().getProfileUrl()).getId());
+                httpSession.setAttribute("img", twitter.userOperations().getUserProfile().getProfileImageUrl());
                 model.addAttribute("img", twitter.userOperations().getUserProfile().getProfileImageUrl());
             }
         }
@@ -72,6 +76,8 @@ public class SocialController {
                     model.addAttribute("name", user.getName());
                     model.addAttribute("role", user.getRole());
                     httpSession.setAttribute("role", user.getRole());
+                    httpSession.setAttribute("id", user.getId());
+                    httpSession.setAttribute("img", "http://graph.facebook.com/"+facebook.userOperations().getUserProfile().getId()+"/picture?type=square");
                     model.addAttribute("img", "http://graph.facebook.com/"+facebook.userOperations().getUserProfile().getId()+"/picture?type=square");
                 }
                 else{
@@ -79,6 +85,8 @@ public class SocialController {
                     model.addAttribute("name",userRepository.findByUserUrl(facebook.userOperations().getUserProfile().getLink()).getName());
                     model.addAttribute("role",userRepository.findByUserUrl(facebook.userOperations().getUserProfile().getLink()).getRole());
                     httpSession.setAttribute("role",userRepository.findByUserUrl(facebook.userOperations().getUserProfile().getLink()).getRole());
+                    httpSession.setAttribute("id", userRepository.findByUserUrl(facebook.userOperations().getUserProfile().getLink()).getId());
+                    httpSession.setAttribute("img", "http://graph.facebook.com/"+facebook.userOperations().getUserProfile().getId()+"/picture?type=square");
                     model.addAttribute("img", "http://graph.facebook.com/"+facebook.userOperations().getUserProfile().getId()+"/picture?type=square");
                 }
             }
@@ -86,7 +94,6 @@ public class SocialController {
 
         return "index";
     }
-
 
 
 }
