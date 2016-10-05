@@ -7,10 +7,12 @@ App.controller('profileUserCtrl',['$scope','$http','$location', function ($scope
   $scope.user = [];
 
 
+
   $http.get('http://localhost:8080/user/info/' + window.location.search.slice(4)).success(function (data) {
     $scope.user = data;
   });
 }]);
+
 
 
 App.controller('profileSiteCtrl', function ($scope, $http) {
