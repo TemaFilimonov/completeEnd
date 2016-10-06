@@ -1,0 +1,87 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+    <title>Site maker</title>
+    <link rel="stylesheet" href="css/mainStyle.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+</head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<body ng-app="dnd">
+<div th:switch="${role}">
+    <span th:case="'user'">
+		<div th:replace="fragments/header ::'userHeader'"></div>
+    </span>
+    <span th:case="*">
+		<div th:replace="fragments/header ::'unsignedHeader'"></div>
+    </span>
+</div>
+<div class="container">
+    <div class="col-md-10">
+        <div class="row">
+            <div ng-repeat="(zone, list) in models.dropzones" class="col-md-6">
+                <div class="dropzone box box-yellow">
+                    <h3>Dropzone {{zone}}</h3>
+                    <div ng-include="'list.html'"></div>
+                </div>
+            </div>
+        </div>
+        <div view-source="nested"></div>
+        <h2>Generated Model</h2>
+        <pre>{{modelAsJson}}</pre>
+    </div>
+    <div class="col-md-2">
+        <div class="toolbox box box-grey box-padding">
+            <h3>New Elements</h3>
+            <ul>
+                <li ng-repeat="item in models.templates"
+                    dnd-draggable="item"
+                    dnd-effect-allowed="copy"
+                    dnd-copied="item.id = item.id + 1">
+                    <button type="button" class="btn btn-default btn-lg" disabled="disabled">{{item.type}}</button>
+                </li>
+            </ul>
+        </div>
+        <div ng-if="models.selected" class="box box-grey box-padding">
+            <h3>Selected</h3>
+            <strong>Type: </strong> {{models.selected.type}}<br>
+            <input type="text" ng-model="models.selected.id" class="form-control" style="margin-top: 5px" />
+        </div>
+        <div class="trashcan box box-grey box-padding">
+            <h3>Trashcan</h3>
+            <ul dnd-list="[]">
+                <li><img src="http://gorodnews.ru/gorod/img/6180.jpg" height="200px" width="200px"></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script type="text/ng-template" id="list.html">
+    <ul dnd-list="list">
+        <li ng-repeat="item in list"
+            dnd-draggable="item"
+            dnd-effect-allowed="move"
+            dnd-moved="list.splice($index, 1)"
+            dnd-selected="models.selected = item"
+            ng-class="{selected: models.selected === item}"
+            ng-include="item.type + '.html'">
+        </li>
+    </ul>
+</script>
+<script type="text/ng-template" id="container.html">
+    <div class="container-element box box-blue">
+        <h3>Container {{item.id}}</h3>
+        <div class="column" ng-repeat="list in item.columns" ng-include="'list.html'"></div>
+        <div class="clearfix"></div>
+    </div>
+</script>
+<script type="text/ng-template" id="item.html">
+    <div class="item">Item {{item.id}}</div>
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+<script src="js/dnd.js"></script>
+</body>
+</html>
