@@ -29,7 +29,9 @@ public class ProfileController {
     public @ResponseBody UserProfile ViewProfile(HttpSession httpSession, @PathVariable("id") long id){
         User user = new User();
         user = userRepository.findById(id);
-
+        if(!httpSession.getAttributeNames().hasMoreElements()){
+            return new UserProfile(id , (long)0, user.getName(),user.getUser_photo_url(),user.getUserUrl());
+        }
         return new UserProfile(id , (long)httpSession.getAttribute("id"), user.getName(),user.getUser_photo_url(),user.getUserUrl());
     }
 
