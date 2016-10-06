@@ -4,7 +4,6 @@ import course.dao.FavoriteRepository;
 import course.dao.SiteRepository;
 import course.domain.Favorite;
 import course.domain.Site;
-import course.domain.UserProfile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -37,9 +37,9 @@ public class FavoriteController {
 
     @RequestMapping(value = "/user/favorite/{id}", method = RequestMethod.GET)
     public @ResponseBody List<Site> ViewFavorite(HttpSession httpSession, @PathVariable("id") long id) {
-        List<Site> sites = null;
+        List<Site> sites = new ArrayList<Site>();
         List<Favorite> favorite = favoriteRepository.findByUserId(id);
-        for(int i = favorite.size(); i>=0; i--){
+        for(int i = favorite.size()-1; i>=0; i--){
             sites.add(siteRepository.findById(favorite.get(i).getSiteId()));
         }
         return sites;

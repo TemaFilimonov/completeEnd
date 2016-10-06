@@ -8,7 +8,7 @@
 </head>
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<body ng-app="course">
+<body ng-app="favorite">
     <div th:switch="${role}">
         <span th:case="'user'">
             <div th:replace="fragments/header ::'userHeader'"></div>
@@ -44,7 +44,7 @@
             </div>
         </div>
         <div class="col-md-12" ng-if="user.id != user.sessionId || user.id == null">
-            <img src="http://www.pyropuzzles.com/Images/Access%20Denied.png" class="center-block"/>
+            <img src="http://www.pyropuzzles.com/Images/Access%20Denied.png" height="460" width="640" class="center-block"/>
         </div>
     </div>
 
@@ -52,6 +52,6 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-<script src="../static/js/app.js"></script>
+<script src="js/favorite.js"></script>
 </body>
 </html>
