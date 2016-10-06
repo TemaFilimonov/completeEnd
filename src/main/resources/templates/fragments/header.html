@@ -57,7 +57,7 @@
                                 <li class="userinfo"><img th:src="${img}" height="35" width="35" class="round"/><p th:text="${name}"></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a th:href="@{'profile?id='+${id}}">Profile</a></li>
-                                <li><a href="#">Favorite</a></li>
+                                <li><a th:href="@{'favorite?id='+${id}}">Favorite</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="/disconnect">Log Out</a></li>
                             </ul>
