@@ -26,10 +26,11 @@ public class ProfileController {
     }
 
     @RequestMapping(value = "/user/info/{id}", method = RequestMethod.GET)
-    public @ResponseBody UserProfile ViewProfile(HttpSession httpSession, @PathVariable("id") String id){
+    public @ResponseBody UserProfile ViewProfile(HttpSession httpSession, @PathVariable("id") long id){
         User user = new User();
-        user = userRepository.findById(Integer.parseInt(id));
-        return new UserProfile(id ,httpSession.getAttribute("id").toString(), user.getName(),user.getUser_photo_url(),user.getUserUrl());
+        user = userRepository.findById(id);
+
+        return new UserProfile(id , (long)httpSession.getAttribute("id"), user.getName(),user.getUser_photo_url(),user.getUserUrl());
     }
 
     @RequestMapping(value = "/profile", method = RequestMethod.GET)

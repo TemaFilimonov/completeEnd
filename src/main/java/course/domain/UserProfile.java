@@ -4,31 +4,31 @@ package course.domain;
  * Created by Nox on 05.10.2016.
  */
 public class UserProfile {
-    private String id;
+    private long id;
     private String name;
     private String photoUrl;
     private String socialUrl;
-    private String sessionId;
+    private long sessionId;
 
     public UserProfile(){}
 
-    public String getSessionId() {
+    public long getSessionId() {
         return sessionId;
     }
 
-    public void setSessionId(String sessionId) {
+    public void setSessionId(long sessionId) {
         this.sessionId = sessionId;
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public UserProfile(String id, String sessionId, String name, String photoUrl, String socialUrl){
+    public UserProfile(long id, long sessionId, String name, String photoUrl, String socialUrl){
         this.id = id;
         this.sessionId = sessionId;
         this.name = name;
