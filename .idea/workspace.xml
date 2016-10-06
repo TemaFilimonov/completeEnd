@@ -2,15 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a3ae4c77-4ded-4b9a-a5a7-094fc095844c" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/templates/favorite.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/templates/favorite.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/course/controller/ProfileController.class" afterPath="$PROJECT_DIR$/target/classes/course/controller/ProfileController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/course/controller/SiteController.java" afterPath="$PROJECT_DIR$/src/main/java/course/controller/SiteController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/application.properties" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/application.properties" afterPath="$PROJECT_DIR$/target/classes/application.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/course/controller/ProfileController.java" afterPath="$PROJECT_DIR$/src/main/java/course/controller/ProfileController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/js/app.js" afterPath="$PROJECT_DIR$/src/main/resources/static/js/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/header.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/header.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/static/js/app.js" afterPath="$PROJECT_DIR$/target/classes/static/js/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/templates/profile.html" afterPath="$PROJECT_DIR$/target/classes/templates/profile.html" />
     </list>
     <ignored path="gs-accessing-twitter.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -101,7 +100,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/course/controller/ProfileController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="323">
-              <caret line="35" column="54" selection-start-line="35" selection-start-column="54" selection-end-line="35" selection-end-column="54" />
+              <caret line="38" column="54" selection-start-line="38" selection-start-column="54" selection-end-line="38" selection-end-column="54" />
               <folding />
             </state>
           </provider>
@@ -222,12 +221,12 @@
         <option value="$PROJECT_DIR$/src/main/resources/templates/profile.html" />
         <option value="$PROJECT_DIR$/src/main/java/course/dao/SiteRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/course/domain/UserProfile.java" />
-        <option value="$PROJECT_DIR$/src/main/java/course/controller/ProfileController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/java/course/controller/SiteController.java" />
         <option value="$PROJECT_DIR$/src/main/java/course/domain/Favorite.java" />
         <option value="$PROJECT_DIR$/src/main/java/course/dao/FavoriteRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/course/controller/FavoriteController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/course/controller/ProfileController.java" />
       </list>
     </option>
   </component>
@@ -1238,12 +1237,12 @@
       <workItem from="1475656285738" duration="26581000" />
       <workItem from="1475709241421" duration="2067000" />
       <workItem from="1475714324260" duration="2869000" />
-      <workItem from="1475721314787" duration="5285000" />
+      <workItem from="1475721314787" duration="5369000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="101698000" />
+    <option name="totallyTimeSpent" value="101782000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="7" />
@@ -1528,7 +1527,7 @@
         <state relative-caret-position="119">
           <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding>
-            <marker date="1475715448434" expanded="true" signature="158:180" ph="{...}" />
+            <marker date="1475753551785" expanded="true" signature="158:180" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1660,7 +1659,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/course/controller/ProfileController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
-          <caret line="35" column="54" selection-start-line="35" selection-start-column="54" selection-end-line="35" selection-end-column="54" />
+          <caret line="38" column="54" selection-start-line="38" selection-start-column="54" selection-end-line="38" selection-end-column="54" />
           <folding />
         </state>
       </provider>

@@ -52,7 +52,7 @@
 									<th>Title</th>
 									<th>Edit date</th>
 									<th>Create date</th>
-									<th ng-if="user.id == user.sessionId">Management</th>
+									<th ng-if="user.id == user.sessionId && user.id != null">Management</th>
 								</tr>
 							</thead>
 							<tbody>
