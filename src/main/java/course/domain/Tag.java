@@ -15,18 +15,20 @@ public class Tag {
 
     public Tag(){
         this.tagValue =null;
-        this.siteId= 0;
+        //this.siteId= 0;
     }
-    public Tag(String tagValue, long siteId){
+    public Tag(String tagValue){
         this.tagValue = tagValue;
-        this.siteId = siteId;
+       // this.siteId = siteId;
     }
 
     @Column(name = "page_body")
     private String tagValue;
+/*
 
     @Column(name = "site_id")
     private long siteId;
+*/
 
     public long getId() {
         return id;
@@ -44,11 +46,11 @@ public class Tag {
         this.tagValue = tagValue;
     }
 
-    public long getSiteId() {
+/*    public long getSiteId() {
         return siteId;
     }
 
     public void setSiteId(long siteId) {
         this.siteId = siteId;
-    }
+    }*/
 }

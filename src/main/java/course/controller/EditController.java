@@ -1,13 +1,15 @@
 package course.controller;
 
 import course.dao.SiteRepository;
+import course.domain.Site;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by Nox on 06.10.2016.
@@ -24,9 +26,12 @@ public class EditController {
         this.siteRepository = siteRepository;
     }
 
-    @RequestMapping(value = "/create/view", method = RequestMethod.GET)
-    public String ViewCreate(Model model) {
-        return "create";
+    @RequestMapping(value = "/edit/source/{id}", method = RequestMethod.GET)
+    public void Source(Model model, @RequestBody String source, @PathVariable long id) {
+        Site site = siteRepository.findById(id);
+        site.setSource(source);
+        Date data = Calendar.getInstance().getTime();
+        site.setEditDate(data.toString());
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.GET)

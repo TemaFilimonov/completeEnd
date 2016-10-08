@@ -1,5 +1,9 @@
 package course.domain;
 
+
+import org.hibernate.annotations.Type;
+import java.util.Date;
+import java.util.List;
 import javax.persistence.*;
 
 /**
@@ -16,10 +20,19 @@ public class Site {
     public Site(){
         this.name =null;
         this.ownerId= 0;
+        this.createDate = null;
+        this.editDate = null;
+        this.source = null;
+        this.tag = null;
     }
-    public Site(String name, long ownerId){
+    public Site(String name, long ownerId, String createDate, String editDate, String source, List<Tag> tag){
         this.name = name;
         this.ownerId = ownerId;
+        this.createDate = createDate;
+        this.editDate = editDate;
+        this.source = source;
+        this.tag = tag;
+
     }
 
     @Column(name = "name")
@@ -29,26 +42,49 @@ public class Site {
     private long ownerId;
 
     @Column(name = "create_date")
-    private String create_date;
+    private String createDate;
 
-    public String getCreateDate() {
-        return create_date;
+    @Column(name = "edit_date")
+    private String editDate;
+
+    @Type(type = "org.hibernate.type.TextType")
+    @Column(name = "source")
+    private  String source;
+
+    @Column(name = "tags")
+    private List<Tag> tag;
+
+    public List<Tag> getTag() {
+        return tag;
     }
 
-    public void setCreateDate(String create_date) {
-        this.create_date = create_date;
+    public void setTag(List<Tag> tag) {
+        this.tag = tag;
+    }
+
+    public String getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(String createDate) {
+        this.createDate = createDate;
     }
 
     public String getEditDate() {
-        return edit_date;
+        return editDate;
     }
 
-    public void setEditDate(String edit_date) {
-        this.edit_date = edit_date;
+    public void setEditDate(String editDate) {
+        this.editDate = editDate;
     }
 
-    @Column(name = "edit_date")
-    private String edit_date;
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
+    }
 
     public long getId() {
         return id;
