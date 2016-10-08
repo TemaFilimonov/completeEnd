@@ -1,6 +1,8 @@
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
-<html>
+      xmlns:th="http://www.thymeleaf.org"
+      >
+<html lang="en">
 <head>
     <title>Site maker</title>
     <link rel="stylesheet" href="css/demo-framework.css">
@@ -8,10 +10,18 @@
     <link rel="stylesheet" href="css/mainStyle.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-summernote/0.8.1/angular-summernote.js"></script>
+    <script src="//code.angularjs.org/1.2.20/angular-sanitize.min.js"></script>
 </head>
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<body ng-app="dnd" ng-controller="sran as sran">
+<body ng-app="dnd" ng-controller="editCtrl">
 <div th:switch="${role}">
     <span th:case="'user'">
 		<div th:replace="fragments/header ::'userHeader'"></div>
@@ -24,7 +34,7 @@
     <div class="nestedDemo row">
     <div class="col-md-10">
         <div class="row">
-            <div ng-repeat="(zone, list) in models.dropzones" class="col-md-6">
+            <div ng-repeat="(zone, list) in models.dropzones" class="col-md-12">
                 <div class="dropzone box box-yellow">
                     <h3>Dropzone {{zone}}</h3>
                     <div ng-include="'list.html'"></div>
@@ -32,30 +42,38 @@
             </div>
         </div>
         <div view-source="nested"></div>
+        <div ng-if="models.selected" class="box box-grey box-padding">
+            <h3>Selected</h3>
+            <strong>Type: </strong> {{models.selected.type}}<br>
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <input type="button" class="btn btn-info" value="Clear" onclick="javascript:eraseText();">
+                <input type="button" class="btn btn-info" value="Img" onclick="javascript:addImg();">
+                <input type="button" class="btn btn-info" value="Video" onclick="javascript:addVideo();">
+            </div>
+            <textarea id='output'  type="text" ng-model="models.selected.code" class="form-control"
+                                              style="margin-top: 5px;  -ms-word-break: break-all; word-break: break-all;
+                                              -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto;;" ></textarea>
+        </div>
         <h2>Generated Model</h2>
         <pre>{{modelAsJson}}</pre>
     </div>
     <div class="col-md-2">
+        <button  type="button" ng-click='savePage()' class="btn btn-success btn-block" style="margin-bottom: 15px;">Save page</button>
+
         <div class="toolbox box box-grey box-padding">
             <h3>New Elements</h3>
             <ul>
                 <li ng-repeat="item in models.templates"
                     dnd-draggable="item"
-                    dnd-effect-allowed="copy"
-                    dnd-copied="item.id = item.id + 1">
+                    dnd-effect-allowed="copy">
                     <button type="button" class="btn btn-default btn-lg" disabled="disabled">{{item.type}}</button>
                 </li>
             </ul>
         </div>
-        <div ng-if="models.selected" class="box box-grey box-padding">
-            <h3>Selected</h3>
-            <strong>Type: </strong> {{models.selected.type}}<br>
-            <input type="text" ng-model="models.selected.id" class="form-control" style="margin-top: 5px" />
-        </div>
         <div class="trashcan box box-grey box-padding">
             <h3>Trashcan</h3>
             <ul dnd-list="[]">
-                <li><img src="http://gorodnews.ru/gorod/img/6180.jpg" height="200px" width="200px"></li>
+                <li><img src="http://s1.iconbird.com/ico/2013/12/505/w450h4001385925290Delete.png" height="160px" width="160px"></li>
             </ul>
         </div>
     </div>
@@ -72,9 +90,6 @@
             </li>
         </ul>
     </script>
-
-    <!-- This template is responsible for rendering a container element. It uses
-         the above list template to render each container column -->
     <script type="text/ng-template" id="container.html">
         <div class="container-element box box-blue">
             <h3>Container {{item.id}}</h3>
@@ -82,17 +97,25 @@
             <div class="clearfix"></div>
         </div>
     </script>
-
-    <!-- Template for a normal list item -->
     <script type="text/ng-template" id="item.html">
-        <div class="item">Item {{item.id}}</div>
+        <div class="item"><p ng-bind-html="item.code"></p></div>
     </script>
-</div>
+
+    </div>
     </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+
+<script>
+    function eraseText() {
+        document.getElementById("output").value = "";
+    }
+    function addImg() {
+        document.getElementById("output").value += "<img src='img link' width='300px' height='300'></img>";
+    }
+    function addVideo() {
+        document.getElementById("output").value = "<div class='embed-responsive embed-responsive-16by9'><iframe class='embed-responsive-item' src=''></iframe></div>";
+    }
+</script>
 <script src="js/angular-drag-and-drop-lists.js"></script>
 <script src="js/dnd.js"></script>
 

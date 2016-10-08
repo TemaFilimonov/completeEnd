@@ -1,6 +1,5 @@
 package course.controller;
 
-import course.dao.FavoriteRepository;
 import course.dao.SiteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,13 +14,13 @@ import javax.servlet.http.HttpSession;
  */
 @Controller
 @RequestMapping("/")
-public class CreateController {
+public class EditController {
 
     @Autowired
     private SiteRepository siteRepository;
 
     @Autowired
-    public CreateController(SiteRepository siteRepository){
+    public EditController(SiteRepository siteRepository){
         this.siteRepository = siteRepository;
     }
 
@@ -30,12 +29,12 @@ public class CreateController {
         return "create";
     }
 
-    @RequestMapping(value = "/create", method = RequestMethod.GET)
+    @RequestMapping(value = "/edit", method = RequestMethod.GET)
     public String ViewCreateRole(Model model, HttpSession httpSession){
         model.addAttribute("role", httpSession.getAttribute("role"));
         model.addAttribute("name", httpSession.getAttribute("name"));
         model.addAttribute("id", httpSession.getAttribute("id"));
         model.addAttribute("img", httpSession.getAttribute("img"));
-        return "/create";
+        return "edit";
     }
 }

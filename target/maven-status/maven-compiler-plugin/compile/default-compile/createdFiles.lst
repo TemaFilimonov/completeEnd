@@ -11,5 +11,4 @@ course\domain\Favorite.class
 course\domain\User.class
 course\domain\Site.class
 course\controller\SiteController.class
-course\controller\CreateController.class
 course\controller\ProfileController.class
