@@ -24,9 +24,9 @@ angular.module("dnd", ['dndLists','ngSanitize','summernote'])
         }, true);
 
         $scope.savePage = function (action) {
-            $http.post("ChangeDropZone", $scope.modelAsJson, action).success(function (selectedDropZone) {
-                $scope.models.dropzones.Body = $scope.modelAsJson.Body;
-            })};
+            console.log($scope.modelAsJson);
+            var source = $scope.modelAsJson;
+            $http.post("edit/source", source, action)};
 
     }
 );
