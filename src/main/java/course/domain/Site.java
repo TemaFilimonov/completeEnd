@@ -2,9 +2,9 @@ package course.domain;
 
 
 import org.hibernate.annotations.Type;
-import java.util.Date;
-import java.util.List;
+
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by Nox on 05.10.2016.
@@ -16,21 +16,13 @@ public class Site {
     @Column(name = "ID")
     private long id;
 
-
-    public Site(){
-        this.name =null;
-        this.ownerId= 0;
-        this.createDate = null;
-        this.editDate = null;
-        this.source = null;
-        this.tag = null;
-    }
-    public Site(String name, long ownerId, String createDate, String editDate, String source, List<Tag> tag){
+    public Site(){}
+    public Site(String name, long ownerId, String createDate, String editDate, List<Tag> tag){
         this.name = name;
         this.ownerId = ownerId;
         this.createDate = createDate;
         this.editDate = editDate;
-        this.source = source;
+        this.source = " \"{\"A\":[]}\"";
         this.tag = tag;
 
     }
@@ -51,6 +43,8 @@ public class Site {
     @Column(name = "source")
     private  String source;
 
+    @OneToMany
+    @Type(type = "org.hibernate.type.ListType")
     @Column(name = "tags")
     private List<Tag> tag;
 

@@ -26,16 +26,17 @@ public class EditController {
         this.siteRepository = siteRepository;
     }
 
-    @RequestMapping(value = "/edit/source/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/edit/source/{id}", method = RequestMethod.POST)
     public void Source(Model model, @RequestBody String source, @PathVariable long id) {
         Site site = siteRepository.findById(id);
         site.setSource(source);
         Date data = Calendar.getInstance().getTime();
         site.setEditDate(data.toString());
+        siteRepository.save(site);
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
-    public String ViewCreateRole(Model model, HttpSession httpSession){
+    public String ViewEditRole(Model model, HttpSession httpSession){
         model.addAttribute("role", httpSession.getAttribute("role"));
         model.addAttribute("name", httpSession.getAttribute("name"));
         model.addAttribute("id", httpSession.getAttribute("id"));

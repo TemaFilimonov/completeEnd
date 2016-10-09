@@ -26,10 +26,7 @@ angular.module("dnd", ['dndLists','ngSanitize','summernote'])
         $scope.savePage = function (action) {
             console.log($scope.modelAsJson);
             var source = $scope.modelAsJson;
-            $http.post("edit/source", source, action).success(function (selectedDropZone) {
-
-                $scope.models.dropzones.Body = $scope.modelAsJson.Body;
-            })};
+            $http.post("edit/source/"+ window.location.search.slice(6), source, action)};
 
     }
 );
