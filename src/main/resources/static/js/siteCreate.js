@@ -6,12 +6,21 @@
 angular.module("siteCreate", ['ngSanitize'])
 
     .controller("creationCtrl", function($scope, $http) {
-            $scope.site = [];
 
             $scope.saveSite = function (action) {
+
+                $scope.site =
+                {
+                    name: $scope.src.name,
+                    ownerId: null,
+                    createDate: null,
+                    editDate: null,
+                    source: null,
+                    tags: $scope.src.tags
+                } ;
                 console.log($scope.site);
-                var source = $scope.site;
-                $http.post("save/site/", source, action)};
+                $http.post("save/site/", $scope.site , action)};
 
         }
     );
+
