@@ -44,7 +44,11 @@ public class Site {
     private  String source;
 
     @OneToMany
+<<<<<<< HEAD
     @Type(type = "org.hibernate.type.ListType")
+=======
+ //   @Type(type = "org.hibernate.type.ListType")
+>>>>>>> origin/master
     @Column(name = "tags")
     private List<Tag> tag;
 

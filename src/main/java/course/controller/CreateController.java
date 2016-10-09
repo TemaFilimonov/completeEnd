@@ -30,21 +30,36 @@ public class CreateController {
         this.siteRepository = siteRepository;
     }
 
+<<<<<<< HEAD
     @RequestMapping(value = "save/site", method = RequestMethod.POST)
     public void CreateSite(HttpSession httpSession, Model model, @RequestBody String name, @RequestBody String stringTags) {
+=======
+    @RequestMapping(value = "/save/site", method = RequestMethod.POST)
+    public void CreateSite(@RequestBody String name, @RequestBody String stringTags, HttpSession httpSession) {
+>>>>>>> origin/master
         List<Tag> tag = new ArrayList<Tag>();
-        for (String retval : stringTags.split(" ")) {
+        for (String retval : stringTags.split(" ,")) {
             tag.add(new Tag(retval));
         }
+<<<<<<< HEAD
         siteRepository.save(new Site(name, (long)httpSession.getAttribute("id"), Calendar.getInstance().getTime().toString(), Calendar.getInstance().getTime().toString(), tag));
     }
 
+=======
+        String source = "{\"A\":[]}";
+        siteRepository.save(new Site(name, (long)httpSession.getAttribute("id"), Calendar.getInstance().getTime().toString(), Calendar.getInstance().getTime().toString(), source, tag));
+    }
+>>>>>>> origin/master
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String ViewCreateRole(Model model, HttpSession httpSession){
         model.addAttribute("role", httpSession.getAttribute("role"));
         model.addAttribute("name", httpSession.getAttribute("name"));
         model.addAttribute("id", httpSession.getAttribute("id"));
         model.addAttribute("img", httpSession.getAttribute("img"));
+<<<<<<< HEAD
         return "create";
+=======
+        return "/create";
+>>>>>>> origin/master
     }
 }
