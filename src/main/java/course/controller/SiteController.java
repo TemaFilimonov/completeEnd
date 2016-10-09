@@ -36,5 +36,12 @@ public class SiteController {
         return sites;
     }
 
+    @RequestMapping(value = "/site/info/{id}", method = RequestMethod.GET)
+    public @ResponseBody
+    String ViewSiteSource(HttpSession httpSession, @PathVariable("id") long id){
+        Site site;
+        site = siteRepository.findById(id);
+        return site.getSource();
+    }
 
 }

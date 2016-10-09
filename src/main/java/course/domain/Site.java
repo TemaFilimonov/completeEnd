@@ -28,13 +28,13 @@ public class Site {
         this.tags = tags;
 
     }
-    public Site(String name, long ownerId){
+    public Site(String name, String tags){
         this.name = name;
-        this.ownerId = ownerId;
+        this.ownerId = 0;
         this.createDate = null;
         this.editDate = null;
         this.source = " \"{\"A\":[]}\"";
-        this.tags = null;
+        this.tags = tags;
 
     }
     public Site(String name, long ownerId, String createDate, String editDate, String source, String tags){
