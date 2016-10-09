@@ -26,6 +26,15 @@ public class Site {
         this.tag = tag;
 
     }
+    public Site(String name, long ownerId, String createDate, String editDate, String source, List<Tag> tag){
+        this.name = name;
+        this.ownerId = ownerId;
+        this.createDate = createDate;
+        this.editDate = editDate;
+        this.source = source;
+        this.tag = tag;
+
+    }
 
     @Column(name = "name")
     private String name;

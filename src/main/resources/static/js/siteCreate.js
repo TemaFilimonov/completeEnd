@@ -19,4 +19,3 @@ App.controller('creationCtrl',['$scope','$http','$location', function ($scope, $
         $scope.site = data;
     });
 }]);
-
