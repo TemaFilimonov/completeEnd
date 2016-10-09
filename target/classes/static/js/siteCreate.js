@@ -10,9 +10,8 @@ angular.module("siteCreate", ['ngSanitize'])
 
             $scope.saveSite = function (action) {
                 console.log($scope.site);
-                var source = $scope.site.name;
-                $http.post("save/site/", source, action);
-                var sourse = $scope.site.stringTags;
-                $http.post("save/tag/", sourse, action)};
+                var source = $scope.site;
+                $http.post("save/site/", source, action)};
+
         }
     );
