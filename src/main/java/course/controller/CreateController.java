@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -31,12 +32,21 @@ public class CreateController {
         this.siteRepository = siteRepository;
     }
 
-    @RequestMapping(value = "/create/site/{id}", method = RequestMethod.GET)
-    public void CreateSite(Model model, @RequestBody String name, @RequestBody String source, @RequestBody String stringTags, @PathVariable long id) {
+    @RequestMapping(value = "/save/site", method = RequestMethod.POST)
+    public void CreateSite(@RequestBody String name, @RequestBody String stringTags, HttpSession httpSession) {
         List<Tag> tag = new ArrayList<Tag>();
-        for (String retval : stringTags.split(" ")) {
+        for (String retval : stringTags.split(" ,")) {
             tag.add(new Tag(retval));
         }
-        siteRepository.save(new Site(name, id, Calendar.getInstance().getTime().toString(), Calendar.getInstance().getTime().toString(), source, tag));
+        String source = "{\"A\":[]}";
+        siteRepository.save(new Site(name, (long)httpSession.getAttribute("id"), Calendar.getInstance().getTime().toString(), Calendar.getInstance().getTime().toString(), source, tag));
+    }
+    @RequestMapping(value = "/create", method = RequestMethod.GET)
+    public String ViewCreateRole(Model model, HttpSession httpSession){
+        model.addAttribute("role", httpSession.getAttribute("role"));
+        model.addAttribute("name", httpSession.getAttribute("name"));
+        model.addAttribute("id", httpSession.getAttribute("id"));
+        model.addAttribute("img", httpSession.getAttribute("img"));
+        return "/create";
     }
 }

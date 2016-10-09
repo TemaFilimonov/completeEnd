@@ -51,6 +51,8 @@ public class Site {
     @Column(name = "source")
     private  String source;
 
+    @OneToMany
+ //   @Type(type = "org.hibernate.type.ListType")
     @Column(name = "tags")
     private List<Tag> tag;
 
