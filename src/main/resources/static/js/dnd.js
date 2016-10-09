@@ -8,6 +8,13 @@
 angular.module("dnd", ['dndLists','ngSanitize','summernote'])
 
     .controller("editCtrl", function($scope, $http) {
+        $scope.site = [];
+        $http.get('http://localhost:8080/site/info/' + window.location.search.slice(6)).success(function (data) {
+            $scope.site = data;
+            console.log( $scope.site[1].source);
+            $scope.model.dropzones = $scope.site[1].source;
+        });
+
         $scope.models = {
             selected: null,
             templates: [
