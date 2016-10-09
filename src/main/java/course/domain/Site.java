@@ -19,13 +19,13 @@ public class Site {
     private long id;
 
     public Site(){}
-    public Site(String name, long ownerId, String createDate, String editDate, List<Tag> tag){
+    public Site(String name, long ownerId, String createDate, String editDate, String tags){
         this.name = name;
         this.ownerId = ownerId;
         this.createDate = createDate;
         this.editDate = editDate;
         this.source = " \"{\"A\":[]}\"";
-        this.tag = tag;
+        this.tags = tags;
 
     }
     public Site(String name, long ownerId){
@@ -34,16 +34,16 @@ public class Site {
         this.createDate = null;
         this.editDate = null;
         this.source = " \"{\"A\":[]}\"";
-        this.tag = null;
+        this.tags = null;
 
     }
-    public Site(String name, long ownerId, String createDate, String editDate, String source, List<Tag> tag){
+    public Site(String name, long ownerId, String createDate, String editDate, String source, String tags){
         this.name = name;
         this.ownerId = ownerId;
         this.createDate = createDate;
         this.editDate = editDate;
         this.source = source;
-        this.tag = tag;
+        this.tags = tags;
 
     }
 
@@ -65,19 +65,12 @@ public class Site {
     @Field(index = Index.YES, analyze= Analyze.YES , store= Store.NO)
     private  String source;
 
-    @OneToMany @IndexedEmbedded
-    @Type(type = "org.hibernate.type.ListType")
+  //  @OneToMany @IndexedEmbedded
+  //  @Type(type = "org.hibernate.type.ListType")
     @Column(name = "tags")
-    @Field(index = Index.YES, analyze= Analyze.YES , store= Store.NO)
-    private List<Tag> tag;
+ //   @Field(index = Index.YES, analyze= Analyze.YES , store= Store.NO)
+    private String tags;
 
-    public List<Tag> getTag() {
-        return tag;
-    }
-
-    public void setTag(List<Tag> tag) {
-        this.tag = tag;
-    }
 
     public String getCreateDate() {
         return createDate;
@@ -97,6 +90,14 @@ public class Site {
 
     public String getSource() {
         return source;
+    }
+
+    public String getTags() {
+        return tags;
+    }
+
+    public void setTags(String tags) {
+        this.tags = tags;
     }
 
     public void setSource(String source) {
