@@ -2,6 +2,8 @@ package course.domain;
 
 
 import org.hibernate.annotations.Type;
+import org.hibernate.search.annotations.*;
+import org.hibernate.search.annotations.Index;
 
 import javax.persistence.*;
 import java.util.List;
@@ -9,10 +11,10 @@ import java.util.List;
 /**
  * Created by Nox on 05.10.2016.
  */
-@Entity
+@Entity @Indexed
 public class Site {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO) @DocumentId
     @Column(name = "ID")
     private long id;
 
@@ -26,6 +28,15 @@ public class Site {
         this.tag = tag;
 
     }
+    public Site(String name, long ownerId){
+        this.name = name;
+        this.ownerId = ownerId;
+        this.createDate = null;
+        this.editDate = null;
+        this.source = " \"{\"A\":[]}\"";
+        this.tag = null;
+
+    }
     public Site(String name, long ownerId, String createDate, String editDate, String source, List<Tag> tag){
         this.name = name;
         this.ownerId = ownerId;
@@ -37,6 +48,7 @@ public class Site {
     }
 
     @Column(name = "name")
+    @Field(index = Index.YES, analyze= Analyze.YES , store= Store.NO)
     private String name;
 
     @Column(name = "owner_id")
@@ -50,11 +62,13 @@ public class Site {
 
     @Type(type = "org.hibernate.type.TextType")
     @Column(name = "source")
+    @Field(index = Index.YES, analyze= Analyze.YES , store= Store.NO)
     private  String source;
 
-    @OneToMany
+    @OneToMany @IndexedEmbedded
     @Type(type = "org.hibernate.type.ListType")
     @Column(name = "tags")
+    @Field(index = Index.YES, analyze= Analyze.YES , store= Store.NO)
     private List<Tag> tag;
 
     public List<Tag> getTag() {
