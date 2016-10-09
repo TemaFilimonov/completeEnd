@@ -8,6 +8,9 @@
 angular.module("dnd", ['dndLists','ngSanitize','summernote'])
 
     .controller("editCtrl", function($scope, $http) {
+        $scope.source = [];
+
+
         $scope.models = {
             selected: null,
             templates: [
@@ -18,6 +21,12 @@ angular.module("dnd", ['dndLists','ngSanitize','summernote'])
                 "A": []
             }
         };
+
+        $http.get('/site/source/' + window.location.search.slice(6)).success(function (data) {
+            $scope.source = data;
+            console.log( $scope.source.A);
+            $scope.models.dropzones.A = $scope.source.A;
+        });
 
         $scope.$watch('models.dropzones', function (model) {
             $scope.modelAsJson = angular.toJson(model, true);

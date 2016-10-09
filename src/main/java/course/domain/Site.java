@@ -2,19 +2,16 @@ package course.domain;
 
 
 import org.hibernate.annotations.Type;
-import org.hibernate.search.annotations.*;
-import org.hibernate.search.annotations.Index;
 
 import javax.persistence.*;
-import java.util.List;
 
 /**
  * Created by Nox on 05.10.2016.
  */
-@Entity @Indexed
+@Entity
 public class Site {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO) @DocumentId
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
     private long id;
 
@@ -48,7 +45,6 @@ public class Site {
     }
 
     @Column(name = "name")
-    @Field(index = Index.YES, analyze= Analyze.YES , store= Store.NO)
     private String name;
 
     @Column(name = "owner_id")
@@ -62,13 +58,9 @@ public class Site {
 
     @Type(type = "org.hibernate.type.TextType")
     @Column(name = "source")
-    @Field(index = Index.YES, analyze= Analyze.YES , store= Store.NO)
     private  String source;
 
-  //  @OneToMany @IndexedEmbedded
-  //  @Type(type = "org.hibernate.type.ListType")
     @Column(name = "tags")
- //   @Field(index = Index.YES, analyze= Analyze.YES , store= Store.NO)
     private String tags;
 
 

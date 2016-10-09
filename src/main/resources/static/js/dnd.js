@@ -8,12 +8,8 @@
 angular.module("dnd", ['dndLists','ngSanitize','summernote'])
 
     .controller("editCtrl", function($scope, $http) {
-        $scope.site = [];
-        $http.get('http://localhost:8080/site/info/' + window.location.search.slice(6)).success(function (data) {
-            $scope.site = data;
-            console.log( $scope.site[1].source);
-            $scope.model.dropzones = $scope.site[1].source;
-        });
+        $scope.source = [];
+
 
         $scope.models = {
             selected: null,
@@ -25,6 +21,12 @@ angular.module("dnd", ['dndLists','ngSanitize','summernote'])
                 "A": []
             }
         };
+
+        $http.get('/site/source/' + window.location.search.slice(6)).success(function (data) {
+            $scope.source = data;
+            console.log( $scope.source.A);
+            $scope.models.dropzones.A = $scope.source.A;
+        });
 
         $scope.$watch('models.dropzones', function (model) {
             $scope.modelAsJson = angular.toJson(model, true);
