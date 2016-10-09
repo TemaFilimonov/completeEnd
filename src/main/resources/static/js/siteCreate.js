@@ -1,21 +1,17 @@
 /**
- * Created by Артем Константинович on 09.10.2016.
+ * Created by Артем Константинович on 06.10.2016.
  */
-'use strict';
+//noinspection JSAnnotator
 
+angular.module("siteCreate", ['ngSanitize'])
 
-var App = angular.module('siteCreate', []);
+    .controller("creationCtrl", function($scope, $http) {
+            $scope.site = [];
 
-App.controller('creationCtrl',['$scope','$http','$location', function ($scope, $http, $location) {
+            $scope.saveSite = function (action) {
+                console.log($scope.site);
+                var source = $scope.site;
+                $http.post("save/site/", source, action)};
 
-    $scope.saveSite = function (action) {
-        var site = $scope.site;
-        $http.post("save/site", site, action);
-    };
-
-
-    $scope.site = [];
-    $http.get('/site/info/' + window.location.search.slice(6)).success(function (data) {
-        $scope.site = data;
-    });
-}]);
+        }
+    );
