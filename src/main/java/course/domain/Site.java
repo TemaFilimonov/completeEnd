@@ -21,7 +21,7 @@ public class Site {
         this.ownerId = ownerId;
         this.createDate = createDate;
         this.editDate = editDate;
-        this.source = " \"{\"A\":[]}\"";
+        this.source = "{ \"A\": [ ] }";
         this.tags = tags;
 
     }
@@ -30,7 +30,7 @@ public class Site {
         this.ownerId = 0;
         this.createDate = null;
         this.editDate = null;
-        this.source = " \"{\"A\":[]}\"";
+        this.source = "{ \"A\": [ ] }";
         this.tags = tags;
 
     }

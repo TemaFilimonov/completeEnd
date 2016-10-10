@@ -17,3 +17,7 @@ App.controller('mainCtrl',['$scope','$http','$location', function ($scope, $http
         $scope.siteByAlhp = data;
     });
 }]);
+App.filter('reverse', function () {
+    return function(items) {
+        return items.slice().reverse();
+    }});

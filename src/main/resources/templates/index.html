@@ -53,7 +53,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr ng-repeat="item in siteByCreation">
+                        <tr ng-repeat="item in siteByCreation  | reverse">
                             <td><a ng-href="/site?site={{item.id}}">{{item.name}}</a></td>
                             <td>{{item.editDate}}</td>
                             <td>{{item.createDate}}</td>
