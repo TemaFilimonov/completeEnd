@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -53,6 +54,42 @@ public class SiteController {
         }
         return "redirect:/profile?id="+httpSession.getAttribute("id").toString();
     }
+
+    @RequestMapping(value = "/site/sortedByAlph/{count}", method = RequestMethod.GET)
+    public @ResponseBody
+    List<Site> ViewMainSites(HttpSession httpSession, @PathVariable("count") int count){
+        List<Site> sites;
+        List<Site> page = new ArrayList<Site>();
+        sites = siteRepository.findAllByOrderByName();
+        for(int j = 0;j<count;j++){
+            if (j >= sites.size()) {
+                break;
+            }
+            else{
+                page.add(sites.get(j));
+            }
+        }
+        return page;
+    }
+
+    @RequestMapping(value = "/site/sortedByCreate/{count}", method = RequestMethod.GET)
+    public @ResponseBody
+    List<Site> ViewMainCreatedSites(HttpSession httpSession, @PathVariable("count") int count){
+        List<Site> sites;
+        List<Site> page = new ArrayList<Site>();
+        sites = siteRepository.findAllByOrderByCreateDate();
+        for(int i = 0;i<count;i++){
+            if (i >= sites.size()) {
+                break;
+            }
+            else{
+                page.add(sites.get(i));
+            }
+        }
+        return page;
+    }
+
+
 
     @RequestMapping(value = "/showsite/{id}", method = RequestMethod.GET)
     public  @ResponseBody

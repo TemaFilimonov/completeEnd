@@ -14,5 +14,7 @@ import java.util.List;
 public interface SiteRepository extends JpaRepository<Site, Long> {
     Site findById(long id);
     List<Site> findByOwnerId (long ownerId);
+    List<Site> findAllByOrderByName ();
+    List<Site> findAllByOrderByCreateDate();
 }
 
