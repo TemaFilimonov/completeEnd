@@ -5,11 +5,7 @@
 
 
 var App = angular.module('siteShow', ['ngSanitize']);
-App.filter('to_trusted', ['$sce', function($sce){
-    return function(text) {
-        return $sce.trustAsHtml(text);
-    };
-}]);
+
 App.controller('siteCtrl',['$scope','$http','$location','$sce', function ($scope, $http, $location, $sce) {
     $sce.trustAsHtml()
     $scope.site = [];
