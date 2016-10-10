@@ -36,7 +36,7 @@
         <div class="row">
             <div ng-repeat="(zone, list) in models.dropzones" class="col-md-12">
                 <div class="dropzone box box-yellow">
-                    <h3>Dropzone {{zone}}</h3>
+                    <h3>Dropzone</h3>
                     <div ng-include="'list.html'"></div>
                 </div>
             </div>
@@ -50,7 +50,7 @@
                 <input type="button" class="btn btn-info" value="Img" onclick="javascript:addImg();">
                 <input type="button" class="btn btn-info" value="Video" onclick="javascript:addVideo();">
             </div>
-            <textarea id='output'  type="text" ng-model="models.selected.code" class="form-control" style="margin-top: 5px;  -ms-word-break: break-all; word-break: break-all;
+            <textarea id='output'  type="text" ng-model="models.selected.code" class="form-control" style="resize: vertical; margin-top: 5px;  -ms-word-break: break-all; word-break: break-all;
                                               -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto;;" ></textarea>
         </div>
         <h2>Generated Model</h2>

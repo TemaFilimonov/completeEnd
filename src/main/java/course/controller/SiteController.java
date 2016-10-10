@@ -1,6 +1,7 @@
 package course.controller;
 
 import course.dao.SiteRepository;
+import course.domain.Render;
 import course.domain.Site;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -54,7 +55,8 @@ public class SiteController {
     }
 
     @RequestMapping(value = "/showsite/{id}", method = RequestMethod.GET)
-    public  @ResponseBody String RenderSite(Model model, HttpSession httpSession, @PathVariable("id") long id){
+    public  @ResponseBody
+    Render RenderSite(Model model, HttpSession httpSession, @PathVariable("id") long id){
       /*  if ((long)httpSession.getAttribute("id") == siteRepository.findById(id).getOwnerId()){
             siteRepository.delete(id);
         }*/
@@ -81,7 +83,7 @@ public class SiteController {
         source = source.replace("]}","</div>");
         //model.addAttribute("source", source);
         ///////////////////
-        return source;
+        return new Render(source);
     }
 
 
