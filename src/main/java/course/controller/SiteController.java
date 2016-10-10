@@ -65,7 +65,7 @@ public class SiteController {
 
         }
         source = source.replace("\n","");
-        source = source.replace( "{ \"A\": ["," <div class=\"container-fluid\"> " );
+        source = source.replace( "{ \"A\": ["," <div class=\"container\"> " );
         source = source.replace("{ \"type\": \"container\", \"columns\": [ [",
                 "<div class=\"row\"> \n" +
                         "<div class=\"col-md-6\">\n");

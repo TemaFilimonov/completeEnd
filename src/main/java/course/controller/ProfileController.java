@@ -44,4 +44,13 @@ public class ProfileController {
         return "/profile";
     }
 
+    @RequestMapping(value = "/site", method = RequestMethod.GET)
+    public String siteRole(Model model, HttpSession httpSession){
+        model.addAttribute("role", httpSession.getAttribute("role"));
+        model.addAttribute("name", httpSession.getAttribute("name"));
+        model.addAttribute("id", httpSession.getAttribute("id"));
+        model.addAttribute("img", httpSession.getAttribute("img"));
+        return "/site";
+    }
+
 }

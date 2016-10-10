@@ -52,7 +52,7 @@
 							</thead>
 							<tbody>
 								<tr ng-repeat="item in site">
-									<td><a ng-href="/showsite/{{item.id}}">{{item.name}}</a></td>
+									<td><a ng-href="/site?site={{item.id}}">{{item.name}}</a></td>
 									<td>{{item.editDate}}</td>
 									<td>{{item.createDate}}</td>
 									<td  ng-if="user.id == user.sessionId && user.id != null">
