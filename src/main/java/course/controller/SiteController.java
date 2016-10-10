@@ -81,6 +81,9 @@ public class SiteController {
         source = source.replace("] ","</div>" );
         source = source.replace("} ","");
         source = source.replace("]}","</div>");
+        source = source.replace("\\n","");
+        source = source.replace("\\","");
+
         //model.addAttribute("source", source);
         ///////////////////
         return new Render(source);
