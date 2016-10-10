@@ -6,6 +6,7 @@ var App = angular.module('mainView', []);
 App.controller('mainCtrl',['$scope','$http','$location', function ($scope, $http, $location) {
     $scope.siteByCreation = [];
     $scope.siteByAlhp = [];
+    $scope.users = [];
     $scope.maxByCreation = 5;
     $scope.maxByAlph = 5;
 
@@ -15,6 +16,9 @@ App.controller('mainCtrl',['$scope','$http','$location', function ($scope, $http
     });
     $http.get('http://localhost:8080/site/sortedByAlph/' + $scope.maxByAlph).success(function (data) {
         $scope.siteByAlhp = data;
+    });
+    $http.get('http://localhost:8080/user/list/').success(function (data) {
+        $scope.users = data;
     });
 }]);
 App.filter('reverse', function () {
