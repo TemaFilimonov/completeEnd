@@ -38,9 +38,11 @@ public class FavoriteController {
     @RequestMapping(value = "/user/favorite/{id}", method = RequestMethod.GET)
     public @ResponseBody List<Site> ViewFavorite(HttpSession httpSession, @PathVariable("id") long id) {
         List<Site> sites = new ArrayList<Site>();
-        List<Favorite> favorite = favoriteRepository.findByUserId(id);
-        for(int i = favorite.size()-1; i>=0; i--){
-            sites.add(siteRepository.findById(favorite.get(i).getSiteId()));
+        if (id==(long)httpSession.getAttribute("id")) {
+            List<Favorite> favorite = favoriteRepository.findByUserId(id);
+            for (int i = favorite.size() - 1; i >= 0; i--) {
+                sites.add(siteRepository.findById(favorite.get(i).getSiteId()));
+            }
         }
         return sites;
     }

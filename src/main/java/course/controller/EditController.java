@@ -27,12 +27,14 @@ public class EditController {
     }
 
     @RequestMapping(value = "/edit/source/{id}", method = RequestMethod.POST)
-    public void Source(Model model, @RequestBody String source, @PathVariable long id) {
+    public void Source(Model model, HttpSession httpSession, @RequestBody String source, @PathVariable long id) {
         Site site = siteRepository.findById(id);
-        site.setSource(source);
-        Date data = Calendar.getInstance().getTime();
-        site.setEditDate(data.toString());
-        siteRepository.save(site);
+        if (site.getOwnerId()==(long)httpSession.getAttribute("id")) {
+            site.setSource(source);
+            Date data = Calendar.getInstance().getTime();
+            site.setEditDate(data.toString());
+            siteRepository.save(site);
+        }
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
