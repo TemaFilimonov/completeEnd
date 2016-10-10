@@ -108,12 +108,14 @@ public class SocialController {
         return "index";
     }
 
-    @RequestMapping(value = "/disconnect")
+    @RequestMapping(value = "/disconnect", method = RequestMethod.GET)
     public String disconnect(HttpSession httpSession){
         if(connectionRepository.findPrimaryConnection(Twitter.class) != null){
             connectionRepository.removeConnection(connectionRepository.getPrimaryConnection(Twitter.class).getKey());
         } else {
-            connectionRepository.removeConnection(connectionRepository.getPrimaryConnection(Facebook.class).getKey());
+            if (connectionRepository.findPrimaryConnection(Facebook.class) != null) {
+                connectionRepository.removeConnection(connectionRepository.getPrimaryConnection(Facebook.class).getKey());
+            }
         }
         httpSession.invalidate();
         return "index";
