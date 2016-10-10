@@ -44,4 +44,12 @@ public class SiteController {
         return site.getSource();
     }
 
+    @RequestMapping(value = "/delete/site/{id}", method = RequestMethod.GET)
+    public String DeleteSite(HttpSession httpSession, @PathVariable("id") long id){
+        if ((long)httpSession.getAttribute("id") == siteRepository.findById(id).getOwnerId()){
+            siteRepository.delete(id);
+        }
+        return "redirect:/profile?id="+httpSession.getAttribute("id").toString();
+    }
+
 }

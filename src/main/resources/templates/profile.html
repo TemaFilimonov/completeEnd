@@ -52,12 +52,12 @@
 							</thead>
 							<tbody>
 								<tr ng-repeat="item in site">
-									<td>{{item.name}}</td>
+									<td><a ng-href="/showsite/{{item.id}}">{{item.name}}</a></td>
 									<td>{{item.editDate}}</td>
 									<td>{{item.createDate}}</td>
 									<td  ng-if="user.id == user.sessionId && user.id != null">
 										<a ng-href="/edit?site={{item.id}}" class="btn btn-success ">Edit</a>
-										<a href="#" class="btn btn-danger ">Delete</a>
+										<a ng-href="/delete/site/{{item.id}}" class="btn btn-danger ">Delete</a>
 									</td>
 								</tr>
 							</tbody>

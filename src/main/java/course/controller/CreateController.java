@@ -2,20 +2,15 @@ package course.controller;
 
 import course.dao.SiteRepository;
 import course.domain.Site;
-import course.domain.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Nox on 09.10.2016.
@@ -33,12 +28,9 @@ public class CreateController {
     }
 
     @RequestMapping(value = "save/site", method = RequestMethod.POST)
-    public void CreateSite(HttpSession httpSession, @RequestBody Site site) {
-        //List<Tag> tag = new ArrayList<Tag>();
-/*        for (String retval : stringTags.split(" ")) {
-            tag.add(new Tag(retval));
-        }*/
+    public String CreateSite(HttpSession httpSession, @RequestBody Site site) {
         siteRepository.save(new Site(site.getName(), (long) httpSession.getAttribute("id"), Calendar.getInstance().getTime().toString(), Calendar.getInstance().getTime().toString(), site.getTags()));
+        return "redirect:/profile?id="+httpSession.getAttribute("id").toString();
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
