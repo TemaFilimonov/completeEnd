@@ -94,11 +94,7 @@ public class SiteController {
     @RequestMapping(value = "/showsite/{id}", method = RequestMethod.GET)
     public  @ResponseBody
     Render RenderSite(Model model, HttpSession httpSession, @PathVariable("id") long id){
-      /*  if ((long)httpSession.getAttribute("id") == siteRepository.findById(id).getOwnerId()){
-            siteRepository.delete(id);
-        }*/
         String source = siteRepository.findById(id).getSource();
-        ////////////////////
         while (source.contains("  ")) {
             source = source.replace( "  ", " " );
 
@@ -120,9 +116,6 @@ public class SiteController {
         source = source.replace("]}","</div>");
         source = source.replace("\\n","");
         source = source.replace("\\","");
-
-        //model.addAttribute("source", source);
-        ///////////////////
         return new Render(source);
     }
 
