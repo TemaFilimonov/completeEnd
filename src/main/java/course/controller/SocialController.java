@@ -1,17 +1,22 @@
 package course.controller;
 
 import course.dao.UserRepository;
+import course.domain.Site;
 import course.domain.User;
 import org.springframework.social.connect.ConnectionRepository;
 import org.springframework.social.facebook.api.Facebook;
 import org.springframework.social.twitter.api.Twitter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Артем Константинович on 30.09.2016.
@@ -119,6 +124,14 @@ public class SocialController {
         }
         httpSession.invalidate();
         return "index";
+    }
+
+    @RequestMapping(value = "/user/list", method = RequestMethod.GET)
+    public @ResponseBody
+    List<User> ViewUserList(HttpSession httpSession){
+        List<User> sites;
+        sites = userRepository.findAllByOrderById();
+        return sites;
     }
 
 
