@@ -19,7 +19,7 @@
 </div>
 <div class="container" ng-controller="mainCtrl">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-5">
             <div class="panel panel-default" >
                 <div class="panel-heading"><h4>All Sites</h4></div>
                 <div class="panel-body">
@@ -28,19 +28,19 @@
                         <tr>
                             <th>Title</th>
                             <th>Edit date</th>
-                            <th>Create date</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr ng-repeat="item in siteByAlhp">
+                        <tr ng-repeat="item in siteByAlhp | limitTo:10">
                             <td><a ng-href="/site?site={{item.id}}">{{item.name}}</a></td>
                             <td>{{item.editDate}}</td>
-                            <td>{{item.createDate}}</td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
+        </div>
+        <div class="col-md-5">
             <div class="panel panel-default" >
                 <div class="panel-heading"><h4>Last created</h4></div>
                 <div class="panel-body">
@@ -48,20 +48,39 @@
                         <thead>
                         <tr>
                             <th>Title</th>
-                            <th>Edit date</th>
                             <th>Create date</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr ng-repeat="item in siteByCreation  | reverse">
+                        <tr ng-repeat="item in siteByCreation  | reverse | limitTo:10">
                             <td><a ng-href="/site?site={{item.id}}">{{item.name}}</a></td>
-                            <td>{{item.editDate}}</td>
                             <td>{{item.createDate}}</td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
+        </div>
+        <div class="col-md-2">
+            <div class="panel panel-default" >
+                <div class="panel-heading"><h4>New users</h4></div>
+                <div class="panel-body">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="item in users  | reverse | limitTo:10">
+                            <td><a ng-href="/profile?id={{item.id}}">{{item.name}}</a></td>
+
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
         </div>
     </div>
 </div>

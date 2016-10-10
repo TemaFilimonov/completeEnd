@@ -48,7 +48,6 @@
             <div class="btn-group" role="group" aria-label="Basic example">
                 <input type="button" class="btn btn-info" value="Clear" onclick="javascript:eraseText();">
                 <input type="button" class="btn btn-info" value="Img" onclick="javascript:addImg();">
-                <input type="button" class="btn btn-info" value="Video" onclick="javascript:addVideo();">
             </div>
             <textarea id='output'  type="text" ng-model="models.selected.code" class="form-control" style="resize: vertical; margin-top: 5px;  -ms-word-break: break-all; word-break: break-all;
                                               -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto;;" ></textarea>
@@ -112,9 +111,6 @@
     }
     function addImg() {
         document.getElementById("output").value += "<img src='img link' width='300px' height='300'></img>";
-    }
-    function addVideo() {
-        document.getElementById("output").value = "<div class='embed-responsive embed-responsive-16by9'><iframe class='embed-responsive-item' src=''></iframe></div>";
     }
 </script>
 <script src="js/angular-drag-and-drop-lists.js"></script>
