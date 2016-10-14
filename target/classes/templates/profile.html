@@ -47,7 +47,7 @@
 									<th>Title</th>
 									<th>Edit date</th>
 									<th>Create date</th>
-									<th ng-if="user.id == user.sessionId && user.id != null">Management</th>
+									<th ng-if="user.id != null">Management</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -58,6 +58,10 @@
 									<td  ng-if="user.id == user.sessionId && user.id != null">
 										<a ng-href="/edit?site={{item.id}}" class="btn btn-success ">Edit</a>
 										<a ng-href="/delete/site/{{item.id}}" class="btn btn-danger ">Delete</a>
+									</td>
+									<td  ng-if="user.id != user.sessionId">
+										<!--TODO: backend listener of adding to favorite-->
+										<a ng-click="null" class="btn btn-success ">Add to favorite</a>
 									</td>
 								</tr>
 							</tbody>

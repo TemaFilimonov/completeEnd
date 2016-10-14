@@ -45,12 +45,13 @@
         <div ng-if="models.selected" class="box box-grey box-padding">
             <h3>Selected</h3>
             <strong>Type: </strong> {{models.selected.type}}<br>
-            <div class="btn-group" role="group" aria-label="Basic example">
+            <div id="output" type="text" ng-model="models.selected.code" summernote></div>
+            <!--<div class="btn-group" role="group" aria-label="Basic example">
                 <input type="button" class="btn btn-info" value="Clear" onclick="javascript:eraseText();">
                 <input type="button" class="btn btn-info" value="Img" onclick="javascript:addImg();">
             </div>
             <textarea id='output'  type="text" ng-model="models.selected.code" class="form-control" style="resize: vertical; margin-top: 5px;  -ms-word-break: break-all; word-break: break-all;
-                                              -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto;;" ></textarea>
+                                              -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto;;" ></textarea>-->
         </div>
         <h2>Generated Model</h2>
         <pre>{{modelAsJson}}</pre>

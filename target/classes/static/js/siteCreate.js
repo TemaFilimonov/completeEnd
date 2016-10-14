@@ -18,7 +18,6 @@ angular.module("siteCreate", ['ngSanitize'])
                     source: null,
                     tags: $scope.src.tags
                 } ;
-                console.log($scope.site);
                 $http.post("save/site/", $scope.site , action)};
 
         }
