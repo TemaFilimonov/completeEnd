@@ -3,6 +3,8 @@ package course.controller;
 import course.dao.SiteRepository;
 import course.domain.Render;
 import course.domain.Site;
+import course.service.utils.RenderUtils;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by Артем Константинович on 06.10.2016.
@@ -93,30 +96,11 @@ public class SiteController {
 
     @RequestMapping(value = "/showsite/{id}", method = RequestMethod.GET)
     public  @ResponseBody
-    Render RenderSite(Model model, HttpSession httpSession, @PathVariable("id") long id){
-        String source = siteRepository.findById(id).getSource();
-        while (source.contains("  ")) {
-            source = source.replace( "  ", " " );
-
-        }
-        source = source.replace("\n","");
-        source = source.replace( "{ \"A\": ["," <div class=\"container\"> " );
-        source = source.replace("{ \"type\": \"container\", \"columns\": [ [",
-                "<div class=\"row\"> \n" +
-                        "<div class=\"col-md-6\">\n");
-        source = source.replace("], [",
-                "</div>\n" +
-                        "<div class=\"col-md-6\">\n");
-        source = source.replace("{ \"type\": \"item\", \"code\": \"","");
-        source = source.replace("\" },","");
-        source = source.replace("\" }","");
-        source = source.replace( "},","");
-        source = source.replace("] ","</div>" );
-        source = source.replace("} ","");
-        source = source.replace("]}","</div>");
-        source = source.replace("\\n","");
-        source = source.replace("\\","");
-        return new Render(source);
+    Render RenderSite(@PathVariable("id") long id){
+        return RenderUtils.build(Optional
+                .ofNullable(siteRepository.findById(id))
+                    .map(Site::getSource)
+                    .orElse(StringUtils.EMPTY));
     }
 
 

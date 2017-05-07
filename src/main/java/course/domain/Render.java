@@ -1,22 +1,14 @@
 package course.domain;
 
-/**
- * Created by Nox on 10.10.2016.
- */
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class Render {
     private String source;
-
-    public Render(){}
-
-    public Render(String source){
-        this.source=source;
-    }
-
-    public String getSource() {
-        return source;
-    }
-
-    public void setSource(String source) {
-        this.source = source;
-    }
 }

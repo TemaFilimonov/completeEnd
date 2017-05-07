@@ -2,6 +2,9 @@ package course.controller;
 
 import course.dao.SiteRepository;
 import course.domain.Site;
+import course.elasticsearch.dao.ElasticSiteRepository;
+import course.elasticsearch.domain.ElasticSite;
+import course.service.SiteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,25 +23,23 @@ import java.util.Calendar;
 public class CreateController {
 
     @Autowired
-    private SiteRepository siteRepository;
+    private SiteService siteService;
 
     @Autowired
-    public CreateController(SiteRepository siteRepository){
-        this.siteRepository = siteRepository;
-    }
+    private ElasticSiteRepository elasticSiteRepository;
 
     @RequestMapping(value = "save/site", method = RequestMethod.POST)
-    public String CreateSite(HttpSession httpSession, @RequestBody Site site) {
-            siteRepository.save(new Site(site.getName(), (long) httpSession.getAttribute("id"), Calendar.getInstance().getTime().toString(), Calendar.getInstance().getTime().toString(), site.getTags()));
-            return "redirect:/profile?id="+httpSession.getAttribute("id").toString();
+    public String createSite(HttpSession httpSession, @RequestBody Site site) {
+        return siteService.saveSite(httpSession, site);
     }
 
-    @RequestMapping(value = "/create", method = RequestMethod.GET)
-    public String ViewCreateRole(Model model, HttpSession httpSession){
-        model.addAttribute("role", httpSession.getAttribute("role"));
-        model.addAttribute("name", httpSession.getAttribute("name"));
-        model.addAttribute("id", httpSession.getAttribute("id"));
-        model.addAttribute("img", httpSession.getAttribute("img"));
-        return "create";
+    @RequestMapping(value = "test", method = RequestMethod.GET)
+    public String asfasfasf(HttpSession httpSession) {
+        elasticSiteRepository.save(new ElasticSite("1",
+                "Test",
+                "asfasfas",
+                "asfasfasf",
+                "asfasfasf"));
+        return "ok";
     }
 }

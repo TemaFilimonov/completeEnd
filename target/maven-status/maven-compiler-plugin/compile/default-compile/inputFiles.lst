@@ -1,17 +1,25 @@
-F:\idea\completeEnd\src\main\java\course\controller\FavoriteController.java
-F:\idea\completeEnd\src\main\java\course\dao\FavoriteRepository.java
-F:\idea\completeEnd\src\main\java\course\controller\EditController.java
-F:\idea\completeEnd\src\main\java\course\controller\SocialController.java
-F:\idea\completeEnd\src\main\java\course\Application.java
-F:\idea\completeEnd\src\main\java\course\controller\SiteController.java
-F:\idea\completeEnd\src\main\java\course\controller\CreateController.java
-F:\idea\completeEnd\src\main\java\course\dao\SiteRepository.java
-F:\idea\completeEnd\src\main\java\course\dao\UserRepository.java
-F:\idea\completeEnd\src\main\java\course\domain\User.java
-F:\idea\completeEnd\src\main\java\course\domain\Page.java
-F:\idea\completeEnd\src\main\java\course\domain\Site.java
-F:\idea\completeEnd\src\main\java\course\domain\Tag.java
-F:\idea\completeEnd\src\main\java\course\domain\Render.java
-F:\idea\completeEnd\src\main\java\course\domain\UserProfile.java
-F:\idea\completeEnd\src\main\java\course\controller\ProfileController.java
-F:\idea\completeEnd\src\main\java\course\domain\Favorite.java
+E:\java projects\spp\completeEnd\src\main\java\course\service\utils\RenderUtils.java
+E:\java projects\spp\completeEnd\src\main\java\course\domain\Favorite.java
+E:\java projects\spp\completeEnd\src\main\java\course\elasticsearch\dao\ElasticSiteRepository.java
+E:\java projects\spp\completeEnd\src\main\java\course\domain\Tag.java
+E:\java projects\spp\completeEnd\src\main\java\course\domain\Render.java
+E:\java projects\spp\completeEnd\src\main\java\course\controller\EditController.java
+E:\java projects\spp\completeEnd\src\main\java\course\domain\UserProfile.java
+E:\java projects\spp\completeEnd\src\main\java\course\controller\FavoriteController.java
+E:\java projects\spp\completeEnd\src\main\java\course\controller\CreateController.java
+E:\java projects\spp\completeEnd\src\main\java\course\domain\Site.java
+E:\java projects\spp\completeEnd\src\main\java\course\dao\FavoriteRepository.java
+E:\java projects\spp\completeEnd\src\main\java\course\Application.java
+E:\java projects\spp\completeEnd\src\main\java\course\controller\SocialController.java
+E:\java projects\spp\completeEnd\src\main\java\course\controller\SiteController.java
+E:\java projects\spp\completeEnd\src\main\java\course\domain\User.java
+E:\java projects\spp\completeEnd\src\main\java\course\service\UserService.java
+E:\java projects\spp\completeEnd\src\main\java\course\elasticsearch\domain\ElasticSite.java
+E:\java projects\spp\completeEnd\src\main\java\course\service\SyncModelAndSessionService.java
+E:\java projects\spp\completeEnd\src\main\java\course\controller\SyncAuthController.java
+E:\java projects\spp\completeEnd\src\main\java\course\dao\UserRepository.java
+E:\java projects\spp\completeEnd\src\main\java\course\EsConfig.java
+E:\java projects\spp\completeEnd\src\main\java\course\dao\SiteRepository.java
+E:\java projects\spp\completeEnd\src\main\java\course\domain\Page.java
+E:\java projects\spp\completeEnd\src\main\java\course\controller\ProfileController.java
+E:\java projects\spp\completeEnd\src\main\java\course\service\SiteService.java
